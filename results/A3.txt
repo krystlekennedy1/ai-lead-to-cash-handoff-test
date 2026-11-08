@@ -1,0 +1,36 @@
+PROMPT A, RUN 3 (copied from chat)
+
+Deals take about 10 days on average from closed-won to kickoff (median 9, 90th percentile 15). The time is lost in two places: the wait before kickoff, and credit check and legal on larger or non-standard deals.
+I used the 278 completed deals with usable timelines. The 16 deals still in flight are excluded, and the three with a missing credit date are left out of the stage breakdown. The stage averages reconcile exactly to the total on the 275 deals with every stage date.
+
+Where the days go (average per deal)
+Stage | Days | Share
+Invoice to kickoff | 3.9 | 39%
+Order review to credit check | 2.5 | 25%
+Booked to invoice | 1.5 | 15%
+Legal (non-standard terms only) | 0.7 overall | 7%
+Closed-won to order review | 0.7 | 7%
+Credit check to booked | 0.6 | 6%
+
+What is driving the delays
+1. Credit check on deals of $100K or more. These deals average 4.4 days at credit check against 1.6 days for smaller deals. 60% of deals over $250K wait 5 or more days, and the longest waits are 9 days or more. Of all 34 deals that waited 5 or more days, 33 were Commercial or Enterprise. If large deals were held to 2 days, it would save about 2.6 days per large deal, roughly 8% of all deal-days.
+2. Legal on non-standard terms. 58 of the 278 deals went to legal, and legal alone averages 3.5 days (up to 9). Those deals total 13.3 days against 9.0 for standard deals. Legal followed by credit check adds up to nearly 7 days. Legal holds up Commercial, Enterprise and SMB alike, at about 3.4 to 3.7 days each. Holding legal to 1 day would save about 5.5% of deal-days.
+3. The wait before kickoff is long and uniform. After invoicing, kickoff takes 2 to 5 days on almost every deal, in every segment and size band. It is the biggest single block of time, and it does not depend on deal characteristics. That points to a scheduling or capacity process rather than a problem with particular deals. A 3-day cap would save about 11% of deal-days. About 8% of deals wait 6 to 10 days.
+4. Slow deals are mostly large and non-standard. Of the 31 deals that took 15 or more days, 71% had non-standard terms and 77% were $100K or more. Large deals with non-standard terms average 14.7 days, against 10.9 for large deals with standard terms.
+
+Not a driver: rework
+Rework count has essentially no relationship with cycle time (correlation 0.01). Deals reworked 3 or more times were no slower than clean ones. Rework may still cost effort, but it is not showing up as elapsed time here. About 18% of deals have at least one rework, and Enterprise is highest at 25%, so it is worth a separate look.
+
+What I would fix, in order
+Credit check: auto-approve or fast-track below a threshold (the data suggests about $100K) and set a 2-day target for large deals.
+Legal: build pre-approved clauses and fallbacks for the most common non-standard terms, and have legal start at order review rather than after it.
+Kickoff: find out why invoiced deals sit for 4 days. Check whether it is CS capacity, scheduling or a manual handoff. This is the biggest and least explained block.
+Order of work: the data shows legal finishing before credit check starts. Running them in parallel on non-standard deals would remove several days.
+
+Data issues to be aware of
+No closed deals from Oct 1 to Oct 19. That is a 20-day gap in the extract, so it may be incomplete. I would confirm before trusting any October trend.
+Out-of-order dates on 6 deals: DEAL-5020, 5184 and 5213 (booked before credit check), DEAL-5017 and 5023 (invoice before booked), and DEAL-5265 (kickoff before invoice and closed-won). I excluded them from timing.
+Other oddities: DEAL-5127 has no amount, DEAL-5190 has an amount of exactly $99,999 that looks like a placeholder, and DEAL-5298 has no order review date.
+Missing legal dates: 5 non-standard deals (5131, 5150, 5236, 5288, 5299) have no legal date.
+Dates include weekends, so the day counts are calendar days, not business days.
+In-flight deals: DEAL-5281 (SMB, $24K) closed Oct 20 and has no kickoff. DEAL-5288 (Enterprise, $260K) has had no stage activity since closing on Oct 28, and DEAL-5290 (Enterprise, $340K) has had none since Oct 30.
